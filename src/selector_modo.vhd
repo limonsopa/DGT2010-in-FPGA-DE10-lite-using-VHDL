@@ -1,0 +1,37 @@
+library ieee;
+use ieee.numeric_std.all;
+use ieee.std_logic_1164.all;
+
+entity selector_modo is
+	generic(constant A: integer := 1;
+				constant BC: integer := 20;
+				constant DE: integer := 20);
+	port(sel: in std_logic_vector(1 downto 0);
+		tiempo: out std_logic_vector(13 downto 0));
+end selector_modo;
+
+architecture arch of selector_modo is
+
+	signal hr_manual: unsigned(1 downto 0);
+	signal min_manual: unsigned(5 downto 0);
+	signal seg_manual: unsigned(5 downto 0);
+	signal manual: unsigned(13 downto 0);
+	signal t_manual: std_logic_vector(13 downto 0);
+	
+	begin
+		hr_manual <= to_unsigned(A,2);
+		min_manual <= to_unsigned(BC,6);
+		seg_manual <= to_unsigned(DE,6);
+		--convirtiendo las señales
+		manual <= hr_manual & min_manual & seg_manual;
+		t_manual <= std_logic_vector(manual);
+		tiempo <= "00000101000000" when (sel = "00") else ---5min
+				"00011001000000" when (sel = "01") else ---25 min
+				"01000000000000" when (sel ="10") else ---2 horas
+				t_manual when (sel = "11") else
+				(others => '-');
+---RECORDAR QUE LOS NUMEROS ESTAN EN ESTE FORMATO H:MIN:SEG
+---00:000000:000000
+---HRS: MIN : SEG --
+
+end arch;
