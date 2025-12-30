@@ -1,0 +1,66 @@
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.my_components.all;
+
+entity contador_asc is
+
+      port(en, clk, reset_n: in std_logic;
+		     mov_u, mov_d, mov_c: out std_logic_vector(6 downto 0);
+			  mov_gt40: out std_logic);
+			  
+end contador_asc;
+
+architecture estructura of contador_asc is
+
+signal cuenta_int: std_logic_vector(5 downto 0);
+signal hexa_int: std_logic_vector(11 downto 0);
+signal D,P,Q: unsigned(5 downto 0);
+signal aeqb: std_logic;
+
+begin
+
+  process(D,clk,reset_n)
+	  begin
+	  if reset_n<='0' then
+	  Q<=(others => '0');
+	  elsif rising_edge(clk) then
+	  Q<=D;
+	  end if;
+	  end process;
+	  
+	  process(Q,aeqb,en,P)
+	  begin
+	  if aeqb='0' then
+	  P<=Q+1;
+	  else 
+	  P<="000000";
+	  end if;
+	  
+	  if Q="101000" then
+	  aeqb<='1';
+	  mov_gt40<='1';
+	  else
+	  aeqb<='0';
+	  mov_gt40<='0';
+	  end if;
+	  
+	  if en='0' then
+	  D<=Q;
+	  else
+	  D<=P;
+	  end if;
+	  
+	  cuenta_int<=std_logic_vector(Q);
+	  
+	  end process;
+
+	  
+BINTO: bintobcd_12 port map(a=>cuenta_int, f=>hexa_int);
+H_uni: hexa port map(a=>hexa_int(3 downto 0), f=>mov_u);
+H_dec: hexa port map(a=>hexa_int(7 downto 4), f=>mov_d);
+H_cen: hexa port map(a=>hexa_int(11 downto 8), f=>mov_c);
+
+
+end estructura;
