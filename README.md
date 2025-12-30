@@ -18,7 +18,7 @@ Curso: 1IEE04 – Diseño Digital
 
 El circuito  principal `reloj_ajedrez` permite controlar el tiempo de dos jugadores de ajedrez, mostrando el tiempo de forma **descendente**, gestionando múltiples **modos de juego**, contabilizando **movimientos**, y determinando automáticamente la **pérdida por tiempo**, incluyendo señalización visual mediante LEDs.
 
-Todo el sistema está gobernado por una **máquina de estados finitos (fms.vhd)** y opera de manera síncrona a partir de un reloj de **50 MHz**.
+Todo el ´sistema´ está gobernado por una **máquina de estados finitos (fms.vhd)** y opera de manera síncrona a partir de un reloj de **50 MHz**.
 
 ---
 
