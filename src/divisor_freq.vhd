@@ -1,18 +1,3 @@
-----------------------------------------------------------------------------------------
--- Archivo:   divisor_freq.vhd
-----------------------------------------------------------------------------------------
--- Autor:     Mg. Ing. Mario Raffo
--- Email:     mraffo@pucp.edu.pe
--- Entidad:   Pontificia Universidad Católica del Perú (PUCP)
--- Facultad:  Estudios Generales Ciencias (EE.GG.CC) 
--- Curso:     1IEE04 - Diseño Digital
-----------------------------------------------------------------------------------------
--- Historia de Versión:
--- Versión 1.0 (21/10/2021) - Mario Raffo 
-----------------------------------------------------------------------------------------
--- Descripción:
--- Circuito basado en un contador mod N
-----------------------------------------------------------------------------------------
 
 Library ieee;
 use ieee.std_logic_1164.all;
@@ -59,4 +44,5 @@ begin
   
   clk_o <= clk_o_reg; 
   
+
 end structural;
