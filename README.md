@@ -18,13 +18,13 @@ Curso: 1IEE04 – Diseño Digital
 
 El circuito  principal `reloj_ajedrez` permite controlar el tiempo de dos jugadores de ajedrez, mostrando el tiempo de forma **descendente**, gestionando múltiples **modos de juego**, contabilizando **movimientos**, y determinando automáticamente la **pérdida por tiempo**, incluyendo señalización visual mediante LEDs.
 
-Todo el ´sistema´ está gobernado por una **máquina de estados finitos (fms.vhd)** y opera de manera síncrona a partir de un reloj de **50 MHz**.
+Todo el sistema está gobernado por una **máquina de estados finitos (fms.vhd)** y opera de manera síncrona a partir de un reloj de **50 MHz**.
 
 ---
 
-## ⚙️ Especificaciones del sistema
+##  Especificaciones del sistema
 
-### 🔌 Entradas
+###  Entradas
 | Señal | Descripción |
 |-----|------------|
 | `clk` | Reloj del sistema de 50 MHz (flanco de subida) |
@@ -37,7 +37,7 @@ Todo el ´sistema´ está gobernado por una **máquina de estados finitos (fms.v
 
 ---
 
-### 🕹️ Modos de juego
+###  Modos de juego
 | Código | Modo |
 |----|----|
 | `00` | Blitz – 5 minutos por jugador |
@@ -61,8 +61,6 @@ Todo el ´sistema´ está gobernado por una **máquina de estados finitos (fms.v
 | `display_3` | Decenas de minuto |
 | `display_4` | Unidades de hora |
 | `leds[9:0]` | Indicador visual de pérdida por tiempo |
-
-📌 Todos los displays trabajan en **formato decimal (BCD)**.
 
 ---
 
@@ -92,11 +90,11 @@ Esta lógica se implementa mediante un generador síncrono a 1 Hz.
 
 ---
 
-## 🧠 Arquitectura de diseño digital
+##  Arquitectura de diseño digital
 
 El sistema está organizado de forma **modular**, separando claramente funciones de control, conteo, visualización y señalización.
 
-### 📂 Archivos VHDL
+###  Archivos VHDL
 
 | Archivo | Función |
 |------|--------|
